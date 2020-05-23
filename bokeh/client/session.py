@@ -430,10 +430,6 @@ class ClientSession(object):
         self._callbacks.add_session_callbacks(self._document.session_callbacks)
 
     def _document_patched(self, event):
-        if event.setter is self:
-            log.debug("Not sending notification back to server for a change it requested")
-            return
-
         # TODO (havocp): our "change sync" protocol is flawed
         # because if both sides change the same attribute at the
         # same time, they will each end up with the state of the
